@@ -1050,8 +1050,12 @@ class SerialMotorsBus(MotorsBusBase):
         return value, comm, error
 
     @check_if_not_connected
+    # original:  (changed retries to 3)
+    # def write(
+    #     self, data_name: str, motor: str, value: Value, *, normalize: bool = True, num_retry: int = 0
+    # ) -> None:
     def write(
-        self, data_name: str, motor: str, value: Value, *, normalize: bool = True, num_retry: int = 0
+        self, data_name: str, motor: str, value: Value, *, normalize: bool = True, num_retry: int = 3
     ) -> None:
         """Write a value to a single motor's register.
 
